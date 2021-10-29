@@ -1,0 +1,17 @@
+OLED_ENABLE  = yes
+# AUTO_SHIFT_ENABLE = yes
+RGBLIGHT_ENABLE = no
+COMBO_ENABLE = yes
+MOUSEKEY_ENABLE = no
+# Bootloader selection
+BOOTLOADER = atmel-dfu
+# WPM_ENABLE = yes
+LEADER_ENABLE = yes
+KEY_OVERRIDE_ENABLE = yes
+# MOUSEKEY_ENABLE = no
+# CONSOLE_ENABLE = no # enable for debug
+
+# EXTRAFLAGS += -flto
+
+BOOTMAGIC_ENABLE = no
+
