@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [NORMAL] = LAYOUT_split_3x6_3(
             LGUI_T(KC_TAB), KC_Q, KC_W, KC_F, KC_P, KC_G,                   KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_EQL,
             LCTL_T(KC_GRV), LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_D,                   KC_H, LSFT_T(KC_N), LCTL_T(KC_E), LALT_T(KC_I), LGUI_T(KC_O), KC_QUOT,
-            OSM(MOD_LSFT), LALT_T(KC_Z), KC_X, KC_C, KC_V, KC_B,           KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS,
+            OSM(MOD_LSFT), KC_Z, KC_X, KC_C, KC_V, KC_B,           KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS,
             MO(SYMBOL), MO(NAV), LT(NUMBERS,KC_ENT),                      KC_SPC, KC_LEAD, KC_BSPC
             ),
 
@@ -90,6 +90,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*     KC_DEL, KC_BSPC, KC_TRNS,                                     KC_SPC, KC_BSPC, KC_ENT */
     /* ) */
 };
+bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LGUI_T(KC_A):
+        case LALT_T(KC_R):
+        case LCTL_T(KC_S):
+        case LSFT_T(KC_T):
+        case LSFT_T(KC_N):
+        case LCTL_T(KC_E):
+        case LALT_T(KC_I):
+        case LGUI_T(KC_O):
+            return true;
+        default: 
+            return false;
+    }
+}
+
+
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (!is_keyboard_master()) {
@@ -246,37 +263,47 @@ void matrix_scan_user(void) {
         leading = false;
         leader_end();
         SEQ_ONE_KEY(KC_O) {
-            register_code(KC_LGUI);
+            register_code(KC_LALT);
             register_code(KC_LSFT);
             register_code(KC_RGHT);
             unregister_code(KC_RGHT);
             unregister_code(KC_LSFT);
-            unregister_code(KC_LGUI);
+            unregister_code(KC_LALT);
         }
         SEQ_ONE_KEY(KC_N) {
-            register_code(KC_LGUI);
+            register_code(KC_LALT);
             register_code(KC_LSFT);
             register_code(KC_LEFT);
             unregister_code(KC_LEFT);
             unregister_code(KC_LSFT);
-            unregister_code(KC_LGUI);
+            unregister_code(KC_LALT);
         }
+        SEQ_ONE_KEY(KC_F) {
+            register_code(KC_LCTL);
+            register_code(KC_ESC);
+            unregister_code(KC_LCTL);
+            unregister_code(KC_ESC);
+
+        }
+
     }
 }
 /* const uint16_t PROGMEM test_combo[] = {KC_W, KC_F, COMBO_END}; */
 /* combo_t key_combos[COMBO_COUNT] = {COMBO(test_combo, KC_ESC)}; */
 enum combo_events {
   GAME_ON,
-  ESCAPE
+  ESCAPE,
+  ENTER
 };
 
-const uint16_t PROGMEM game_on[] = {KC_L, KC_U, KC_Y, COMBO_END};
+const uint16_t PROGMEM game_on[] = {KC_L, KC_U, KC_Y,KC_SCLN, COMBO_END};
 const uint16_t PROGMEM escape[] = {KC_F, KC_P, COMBO_END};
+const uint16_t PROGMEM enter[] = {KC_L, KC_U, KC_Y, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     [GAME_ON] = COMBO_ACTION(game_on),
     [ESCAPE] = COMBO_ACTION(escape),
-
+    [ENTER] = COMBO_ACTION(enter),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
@@ -288,6 +315,9 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       break;
     case ESCAPE:
       tap_code(KC_ESC);
+      break;
+    case ENTER:
+      tap_code(KC_ENT);
       break;
   }
 }
