@@ -49,46 +49,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [SYMBOL] = LAYOUT_split_3x6_3(
             KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,           KC_NO, KC_LCBR, KC_RCBR, KC_HASH, KC_SCLN, KC_EQL,
-            KC_TRNS, RGB_TOG, RGB_TOG, RGB_TOG, KC_LSFT, KC_NO,           KC_NO, KC_LPRN, KC_RPRN, KC_LT, KC_GT, KC_QUOT,
+            KC_TRNS, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,  KC_NO, KC_LPRN, KC_RPRN, KC_LT, KC_GT, KC_QUOT,
             KC_TRNS, KC_LALT, KC_NO, KC_NO, KC_NO, KC_NO,         KC_NO, KC_LBRC, KC_RBRC, KC_DOT, KC_SLSH, KC_BSLS,
             KC_TRNS, KC_BSPC, KC_SPC,                                    KC_SPC, KC_SPC, KC_BSPC
             ),
 
-    [NUMBERS] = LAYOUT_split_3x6_3(
+[NUMBERS] = LAYOUT_split_3x6_3(
             KC_TRNS, KC_NO, KC_AMPR, KC_ASTR, KC_LPRN, KC_NO,      KC_BSLS, KC_7, KC_8, KC_9, KC_SCLN, KC_EQL,
             KC_TRNS, KC_NO, KC_DLR, KC_PERC, KC_CIRC, KC_NO,       KC_0, KC_4, KC_5, KC_6, KC_GRV, KC_QUOT,
             KC_TRNS, KC_LALT, KC_EXLM, KC_AT, KC_HASH, KC_NO,      KC_PDOT, KC_1, KC_2, KC_3, KC_SLSH, KC_MINS,
-            KC_DEL, LT(FUNCTIONS, KC_BSPC), KC_TRNS,                                     KC_SPC, KC_0, KC_BSPC
+            KC_DEL, MO(FUNCTIONS), KC_TRNS,                                     KC_SPC, KC_0, KC_BSPC
             ),
     [FUNCTIONS] = LAYOUT_split_3x6_3(
             KC_TRNS, KC_NO, KC_F7, KC_F8, KC_F9, KC_F12,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
             KC_TRNS, KC_NO, KC_F4, KC_F5, KC_F6, KC_F11,       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
             KC_TRNS, KC_LALT, KC_F1, KC_F2, KC_F3, KC_F10,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-            KC_DEL, KC_BSPC, KC_TRNS,                                     KC_TRNS, KC_SPC, KC_BSPC
+            KC_TRNS, KC_TRNS, KC_TRNS,                                     KC_TRNS, KC_SPC, KC_BSPC
             ),
     [GAMING] = LAYOUT_split_3x6_3(
-            KC_TRNS, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, TG(GAMING),
-            KC_TRNS, KC_1, KC_2, KC_3, KC_4, KC_5,       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-            KC_TRNS, KC_LALT, KC_7, KC_8, KC_9, KC_0,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-            KC_DEL, KC_BSPC, KC_TRNS,                                     KC_TRNS, KC_SPC, KC_BSPC
-            ),
-    [GAMING2] = LAYOUT_split_3x6_3(
-            /* KC_TRNS, KC_Q, KC_W, KC_E, KC_R, KC_T,      KC_1, KC_2, KC_3, KC_4, KC_5, TG(GAMING), */
-            /* KC_TRNS, KC_A, KC_S, KC_D, KC_F, KC_G,       KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_NO, */
-            /* KC_TRNS, KC_Z, KC_X, KC_C, KC_V, KC_B,      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, */
-            /* KC_DEL, KC_BSPC, KC_TRNS,                                     KC_TRNS, KC_SPC, KC_BSPC */
-            /* ), */
             LGUI_T(KC_TAB), KC_Q, KC_W, KC_F, KC_P, KC_G,                   KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_EQL,
             LCTL_T(KC_GRV), KC_A, KC_R, KC_S, KC_T, KC_D,                   KC_H, KC_N, KC_E, KC_I, KC_O, KC_QUOT,
             OSM(MOD_LSFT), LALT_T(KC_Z), KC_X, KC_C, KC_V, KC_B,           KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS,
             MO(SYMBOL), MO(NAV), LT(NUMBERS,KC_ENT),                      KC_SPC, KC_LEAD, KC_BSPC
             ),
-    /* [FUNCTIONS] = LAYOUT_split_3x6_3( */
-    /*     LGUI_T(KC_TAB), KC_NO, KC_AMPR, KC_ASTR, KC_LPRN, KC_NO,      KC_BSLS, KC_7, KC_8, KC_9, KC_SCLN, KC_EQL, */
-    /*     LSFT_T(KC_ESC), KC_NO, KC_DLR, KC_PERC, KC_CIRC, KC_NO,       KC_0, KC_4, KC_5, KC_6, KC_GRV, KC_QUOT, */
-    /*     LCTL_T(KC_GRV), KC_LALT, KC_EXLM, KC_AT, KC_HASH, KC_NO,      KC_PDOT, KC_1, KC_2, KC_3, KC_SLSH, KC_MINS, */
-    /*     KC_DEL, KC_BSPC, KC_TRNS,                                     KC_SPC, KC_BSPC, KC_ENT */
-    /* ) */
 };
 bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -106,109 +89,6 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-
-#ifdef OLED_ENABLE
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (!is_keyboard_master()) {
-        return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
-    }
-    return rotation;
-}
-
-char keylog_str[24] = {};
-
-
-#define LT_NORMAL 0
-#define LT_NAV 2
-#define LT_SYMBOL 4
-#define LT_MOUSE 8
-#define LT_NUMBERS 16
-#define LT_FUNCTIONS 32
-/* void oled_render_layer_state(void) { */
-/*     oled_write_P(PSTR("Layer: "), false); */
-/*     [> snprintf(keylog_str, sizeof(keylog_str), "layer %3ld", layer_state); <] */
-/*     switch (layer_state) { */
-/*         case LT_NORMAL: */
-/*             oled_write_ln_P(PSTR("Normal"), false); */
-/*             break; */
-/*         case LT_NAV: */
-/*             oled_write_ln_P(PSTR("Nav"), false); */
-/*             break; */
-/*         case LT_SYMBOL: */
-/*             oled_write_ln_P(PSTR("Symbol"), false); */
-/*             break; */
-/*         case LT_MOUSE: */
-/*             oled_write_ln_P(PSTR("Mouse"), false); */
-/*             break; */
-/*         case LT_NUMBERS: */
-/*             oled_write_ln_P(PSTR("Numbers"), false); */
-/*             break; */
-/*         case LT_FUNCTIONS: */
-/*             oled_write_ln_P(PSTR("Functions"), false); */
-/*             break; */
-/*     } */
-/* } */
-
-
-
-/* const char code_to_name[60] = { */
-/*     ' ', ' ', ' ', ' ', 'a', 'b', 'c', 'd', 'e', 'f', */
-/*     'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', */
-/*     'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', */
-/*     '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', */
-/*     'R', 'E', 'B', 'T', '_', '-', '=', '[', ']', '\\', */
-/*     '#', ';', '\'', '`', ',', '.', '/', ' ', ' ', ' '}; */
-
-/* void set_keylog(uint16_t keycode, keyrecord_t *record) { */
-/*     char name = ' '; */
-/*     if ((keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX) || */
-/*             (keycode >= QK_LAYER_TAP && keycode <= QK_LAYER_TAP_MAX)) { keycode = keycode & 0xFF; } */
-/*     if (keycode < 60) { */
-/*         name = code_to_name[keycode]; */
-/*     } */
-
-/*     // update keylog */
-/*     snprintf(keylog_str, sizeof(keylog_str), "WPM %3d | %c", get_current_wpm(), name); */
-/* } */
-
-/* void oled_render_keylog(void) { */
-/*     oled_write(keylog_str, false); */
-/* } */
-
-/* void render_bootmagic_status(bool status) { */
-/*     [> Show Ctrl-Gui Swap options <] */
-/*     static const char PROGMEM logo[][2][3] = { */
-/*         {{0x97, 0x98, 0}, {0xb7, 0xb8, 0}}, */
-/*         {{0x95, 0x96, 0}, {0xb5, 0xb6, 0}}, */
-/*     }; */
-/*     if (status) { */
-/*         oled_write_ln_P(logo[0][0], false); */
-/*         oled_write_ln_P(logo[0][1], false); */
-/*     } else { */
-/*         oled_write_ln_P(logo[1][0], false); */
-/*         oled_write_ln_P(logo[1][1], false); */
-/*     } */
-/* } */
-
-void oled_render_logo(void) {
-    static const char PROGMEM crkbd_logo[] = {
-        0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8a, 0x8b, 0x8c, 0x8d, 0x8e, 0x8f, 0x90, 0x91, 0x92, 0x93, 0x94,
-        0xa0, 0xa1, 0xa2, 0xa3, 0xa4, 0xa5, 0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xab, 0xac, 0xad, 0xae, 0xaf, 0xb0, 0xb1, 0xb2, 0xb3, 0xb4,
-        0xc0, 0xc1, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xcb, 0xcc, 0xcd, 0xce, 0xcf, 0xd0, 0xd1, 0xd2, 0xd3, 0xd4,
-        0};
-    oled_write_P(crkbd_logo, false);
-}
-
-void oled_task_user(void) {
-    if (is_keyboard_master()) {
-        oled_render_logo();
-        /* oled_render_keylog(); */
-        /* oled_render_layer_state(); */
-    } else {
-        oled_render_logo();
-    }
-}
-#endif // OLED_DRIVER_ENABLE
 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPACE, KC_DELETE);
 
@@ -234,28 +114,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-/* bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) { */
-/*     switch (keycode) { */
-/*         case LGUI_T(KC_A): */
-/*         case LALT_T(KC_R): */
-/*         case LCTL_T(KC_S): */
-/*         case LSFT_T(KC_T): */
-/*         case RSFT_T(KC_N): */
-/*         case RCTL_T(KC_E): */
-/*         case RALT_T(KC_I): */
-/*         case RGUI_T(KC_O): */
-/*             return false; */
-/*         default: */
-/*             return true; */
-/*     } */
-/* } */
-
-/* bool process_record_user(uint16_t keycode, keyrecord_t *record) { */
-/*     if (record->event.pressed) { */
-/*         set_keylog(keycode, record); */
-/*     } */
-/*     return true; */
-/* } */
 
 LEADER_EXTERNS();
 void matrix_scan_user(void) {
@@ -288,22 +146,36 @@ void matrix_scan_user(void) {
 
     }
 }
-/* const uint16_t PROGMEM test_combo[] = {KC_W, KC_F, COMBO_END}; */
-/* combo_t key_combos[COMBO_COUNT] = {COMBO(test_combo, KC_ESC)}; */
+
 enum combo_events {
   GAME_ON,
   ESCAPE,
-  ENTER
+  ENTER,
+  UNDO,
+  CUT,
+  COPY,
+  PASTE,
+  ENTERTWO
 };
 
-const uint16_t PROGMEM game_on[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM game_on[] = {KC_Q, KC_W, KC_F, KC_P, COMBO_END};
+const uint16_t PROGMEM entertwo[] = {KC_W, KC_F, KC_P, COMBO_END};
 const uint16_t PROGMEM escape[] = {KC_F, KC_P, COMBO_END};
 const uint16_t PROGMEM enter[] = {KC_L, KC_U, KC_Y, COMBO_END};
+const uint16_t PROGMEM undo[] = {KC_GRV, KC_QUOT, COMBO_END};
+const uint16_t PROGMEM cut[] = {KC_Z, KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM copy[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM paste[] = {KC_C, KC_D, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     [GAME_ON] = COMBO_ACTION(game_on),
     [ESCAPE] = COMBO(escape, KC_ESC),
     [ENTER] = COMBO(enter, KC_ENT),
+    [ENTERTWO] = COMBO(entertwo, KC_ENT),
+    [UNDO] = COMBO(undo, LCTL(KC_Z)),
+    [CUT] = COMBO(cut, LCTL(KC_X)),
+    [COPY] = COMBO(copy, LCTL(KC_C)),
+    [PASTE] = COMBO(paste, LCTL(KC_V)),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
@@ -315,3 +187,40 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       break;
   }
 }
+
+#ifdef OLED_ENABLE
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    if (!is_keyboard_master()) {
+        return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+    }
+    return rotation;
+}
+
+char keylog_str[24] = {};
+
+
+#define LT_NORMAL 0
+#define LT_NAV 2
+#define LT_SYMBOL 4
+#define LT_MOUSE 8
+#define LT_NUMBERS 16
+#define LT_FUNCTIONS 32
+
+void oled_render_logo(void) {
+    static const char PROGMEM crkbd_logo[] = {
+        0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8a, 0x8b, 0x8c, 0x8d, 0x8e, 0x8f, 0x90, 0x91, 0x92, 0x93, 0x94,
+        0xa0, 0xa1, 0xa2, 0xa3, 0xa4, 0xa5, 0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xab, 0xac, 0xad, 0xae, 0xaf, 0xb0, 0xb1, 0xb2, 0xb3, 0xb4,
+        0xc0, 0xc1, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xcb, 0xcc, 0xcd, 0xce, 0xcf, 0xd0, 0xd1, 0xd2, 0xd3, 0xd4,
+        0};
+    oled_write_P(crkbd_logo, false);
+}
+
+void oled_task_user(void) {
+    if (is_keyboard_master()) {
+        oled_render_logo();
+    } else {
+        oled_render_logo();
+    }
+}
+#endif // OLED_DRIVER_ENABLE
+

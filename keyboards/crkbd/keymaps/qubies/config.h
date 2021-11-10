@@ -49,7 +49,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // #define AUTO_SHIFT_TIMEOUT 250
 
-#define COMBO_COUNT 3
+#define COMBO_COUNT 8
 #define COMBO_TERM 100 //timeout for combos
 //#define SPLIT_HAND_PIN B7
 //#define SPLIT_USB_DETECT
