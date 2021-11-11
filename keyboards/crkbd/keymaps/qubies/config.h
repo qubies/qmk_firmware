@@ -22,35 +22,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define VENDOR_ID 0x4653
 #define PRODUCT_ID 0x0001
-
-
-// #define MANUFACTURER littlekeyboards
-// #define PRODUCT corne 1.1
-// #define DESCRIPTION corne 1.1
-
-// #define USE_MATRIX_I2C
-
-/* Select hand configuration */
-
-//#define MASTER_LEFT
 #define MASTER_RIGHT
-
-// #define EE_HANDS
-
 #define USE_SERIAL_PD2
 
 // #define TAPPING_FORCE_HOLD
 #define PERMISSIVE_HOLD
-#define TAPPING_TERM 300
+#define TAPPING_TERM 200
+#define LEADER_TIMEOUT 500
 #define TAPPING_TERM_PER_KEY
 #define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
-#define LEADER_TIMEOUT 500
 // #define MK_KINETIC_SPEED
 
 // #define AUTO_SHIFT_TIMEOUT 250
 
 #define COMBO_COUNT 8
-#define COMBO_TERM 100 //timeout for combos
+#define COMBO_TERM 50 //timeout for combos
 //#define SPLIT_HAND_PIN B7
 //#define SPLIT_USB_DETECT
 

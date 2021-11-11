@@ -143,7 +143,6 @@ void matrix_scan_user(void) {
             unregister_code(KC_ESC);
 
         }
-
     }
 }
 
