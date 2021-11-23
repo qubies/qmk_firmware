@@ -6,7 +6,7 @@ BOOTLOADER = atmel-dfu
 LEADER_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
 BOOTMAGIC_ENABLE = no
-
+SRC += features/caps_word.c
 # AUTO_SHIFT_ENABLE = yes
 # Bootloader selection
 # WPM_ENABLE = yes

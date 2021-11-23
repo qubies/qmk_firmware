@@ -20,6 +20,8 @@
 
 #include QMK_KEYBOARD_H
 #include <stdio.h>
+#include "features/caps_word.h"
+
 char wpm_str[10];
 
 #define NORMAL 0
@@ -35,7 +37,7 @@ char wpm_str[10];
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [NORMAL] = LAYOUT_split_3x6_3(
             KC_TAB,     KC_Q,         KC_W,         KC_F,         KC_P,         KC_B,              KC_J,   KC_L,         KC_U,         KC_Y,         KC_SCLN,      KC_EQL,
-            KC_GRV,     LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G,              KC_M,   LSFT_T(KC_N), LCTL_T(KC_E), LALT_T(KC_I), LGUI_T(KC_O), KC_QUOT,
+            KC_GRV,     LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G,              KC_M,   RSFT_T(KC_N), RCTL_T(KC_E), RALT_T(KC_I), RGUI_T(KC_O), KC_QUOT,
             KC_BSLS,    KC_Z,         KC_X,         KC_C,         KC_D,         KC_V,              KC_K,   KC_H,         KC_COMM,      KC_DOT,       KC_SLSH,      KC_MINS,
             MO(SYMBOL), MO(NAV),      MO(NUMBERS),                                                 KC_SPC, KC_LEAD,      KC_BSPC
             ),
@@ -79,10 +81,10 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
         case LALT_T(KC_R):
         case LCTL_T(KC_S):
         case LSFT_T(KC_T):
-        case LSFT_T(KC_N):
-        case LCTL_T(KC_E):
-        case LALT_T(KC_I):
-        case LGUI_T(KC_O):
+        case RSFT_T(KC_N):
+        case RCTL_T(KC_E):
+        case RALT_T(KC_I):
+        case RGUI_T(KC_O):
             return true;
         default:
             return false;
@@ -143,6 +145,25 @@ void matrix_scan_user(void) {
             unregister_code(KC_ESC);
 
         }
+        SEQ_ONE_KEY(KC_U) {
+            register_code(KC_LCTL);
+            register_code(KC_ESC);
+            unregister_code(KC_LCTL);
+            unregister_code(KC_ESC);
+        }
+        SEQ_ONE_KEY(KC_W) {
+            register_code(KC_ESC);
+            unregister_code(KC_ESC);
+            register_code(KC_LSFT);
+            register_code(KC_SCLN);
+            unregister_code(KC_LSFT);
+            unregister_code(KC_SCLN);
+            register_code(KC_W);
+            unregister_code(KC_W);
+            register_code(KC_ENT);
+            unregister_code(KC_ENT);
+
+        }
     }
 }
 
@@ -161,7 +182,7 @@ const uint16_t PROGMEM game_on[] = {KC_Q, KC_W, KC_F, KC_P, COMBO_END};
 const uint16_t PROGMEM entertwo[] = {KC_W, KC_F, KC_P, COMBO_END};
 const uint16_t PROGMEM escape[] = {KC_F, KC_P, COMBO_END};
 const uint16_t PROGMEM enter[] = {KC_L, KC_U, KC_Y, COMBO_END};
-const uint16_t PROGMEM undo[] = {KC_GRV, KC_QUOT, COMBO_END};
+const uint16_t PROGMEM undo[] = {KC_GRV, KC_G, COMBO_END};
 const uint16_t PROGMEM cut[] = {KC_Z, KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM copy[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM paste[] = {KC_C, KC_D, COMBO_END};
@@ -185,6 +206,14 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       }
       break;
   }
+}
+
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+  if (!process_caps_word(keycode, record)) { return false; }
+  // Your macros ...
+
+  return true;
 }
 
 #ifdef OLED_ENABLE
