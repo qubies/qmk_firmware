@@ -10,9 +10,9 @@ SRC += features/caps_word.c
 # AUTO_SHIFT_ENABLE = yes
 # Bootloader selection
 # WPM_ENABLE = yes
-# MOUSEKEY_ENABLE = no
+MOUSEKEY_ENABLE = yes
 # CONSOLE_ENABLE = no # enable for debug
 
-# EXTRAFLAGS += -flto
+EXTRAFLAGS += -flto
 
 

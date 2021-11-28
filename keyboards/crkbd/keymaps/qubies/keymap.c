@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
 
     [NAV] = LAYOUT_split_3x6_3(
-            KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                    KC_NO,   KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NO,
+            KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                    KC_BTN1,   KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NO,
             KC_TRNS, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,                                    KC_FIND, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_NO,
             KC_TRNS, KC_LALT, KC_NO,   KC_NO,   KC_NO,   KC_NO,                                    KC_BTN5, KC_BTN1, KC_BTN2, KC_BTN3, KC_BTN4, KC_NO,
             KC_TRNS, KC_TRNS, KC_TRNS,                                                             KC_TRNS,  KC_TRNS, KC_TRNS
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [SYMBOL] = LAYOUT_split_3x6_3(
             KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                    KC_NO,   KC_LCBR, KC_RCBR, KC_HASH, KC_SCLN, KC_EQL,
-            KC_TRNS, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,                                    KC_NO,   KC_LPRN, KC_RPRN, KC_LT,   KC_GT,   KC_QUOT,
+            KC_TRNS, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,                                    KC_BSLS,   KC_LPRN, KC_RPRN, KC_LT,   KC_GT,   KC_QUOT,
             KC_TRNS, KC_LALT, KC_NO,   KC_NO,   KC_BSLS, KC_NO,                                    KC_BSLS, KC_LBRC, KC_RBRC, KC_DOT,  KC_SLSH, KC_MINS,
             KC_TRNS, KC_TRNS, KC_TRNS,                                                             KC_TRNS,  KC_TRNS,  KC_TRNS
             ),

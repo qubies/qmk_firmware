@@ -25,6 +25,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MASTER_RIGHT
 #define USE_SERIAL_PD2
 
+// required if flto is enabled as it breaks them anyways...
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+
 // #define TAPPING_FORCE_HOLD
 #define PERMISSIVE_HOLD
 #define TAPPING_TERM 300
